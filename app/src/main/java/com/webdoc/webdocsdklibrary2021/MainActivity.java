@@ -1,0 +1,29 @@
+package com.webdoc.webdocsdklibrary2021;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.webdoc.webdoc_library.InitiateSDK.Initiate_sdk;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button btnWOD = findViewById(R.id.btnWOD);
+        btnWOD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //new Initiate_sdk(MainActivity.this, "03165121519", "06ad39b1-131d-49f4-86fe-bb564adfca94","Alfa", "#F1A01F");
+                //new Initiate_sdk(MainActivity.this, "03412060022","TPL", "#F1A01F");
+                // new Initiate_sdk(MainActivity.this, "03165121519", "KS", "#F1A01F", true);
+                new Initiate_sdk(MainActivity.this, "asif@webdoc.com.pk", "QMS", "#F1A01F", true);
+            }
+        });
+    }
+}

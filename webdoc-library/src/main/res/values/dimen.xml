@@ -1,0 +1,45 @@
+<resources>
+
+    <!-- TEXT SIZES-->
+    <dimen name="textSize_10">10sp</dimen>
+    <dimen name="textSize_11">11sp</dimen>
+    <dimen name="textSize_12">12sp</dimen>
+    <dimen name="textSize_13">13sp</dimen>
+    <dimen name="textSize_14">14sp</dimen>
+    <dimen name="textSize_15">15sp</dimen>
+    <dimen name="textSize_16">16sp</dimen>
+    <dimen name="textSize_17">17sp</dimen>
+    <dimen name="textSize_20">20sp</dimen>
+
+    <!--MARGIN-->
+
+    <!--PADDING-->
+
+    <!--GUIDLINES-->
+    <dimen name="hGuideline7">0.07</dimen>
+    <dimen name="hGuideline10">0.1</dimen>
+    <dimen name="hGuideline20">0.20</dimen>
+    <dimen name="hGuideline30">0.30</dimen>
+    <dimen name="hGuideline35">0.35</dimen>
+    <dimen name="hGuideline60">0.60</dimen>
+    <dimen name="hGuideline80">0.80</dimen>
+    <dimen name="hGuideline92">0.92</dimen>
+
+    <!-- buttons -->
+    <dimen name="call_button_size">60dp</dimen>
+    <dimen name="other_button_size">54dp</dimen>
+
+    <dimen name="local_preview_margin_top">28dp</dimen>
+    <dimen name="local_preview_margin_right">24dp</dimen>
+
+    <dimen name="local_preview_width">88dp</dimen>
+    <dimen name="local_preview_height">117dp</dimen>
+    <dimen name="local_back_icon_size">50dp</dimen>
+    <dimen name="remote_back_icon_size">100dp</dimen>
+    <dimen name="remote_back_icon_margin_bottom">90dp</dimen>
+
+    <!-- buttons -->
+    <dimen name="control_bottom_margin">24dp</dimen>
+    <dimen name="control_bottom_horizontal_margin">30dp</dimen>
+
+</resources>
