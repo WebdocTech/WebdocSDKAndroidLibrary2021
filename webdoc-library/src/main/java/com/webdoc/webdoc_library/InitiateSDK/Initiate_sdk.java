@@ -90,7 +90,7 @@ public class Initiate_sdk {
 
             this.Corporate = serviceName;
             //serverManager = new ServerManager(ctx, this);
-            InitiateServicesConnection();
+            InitiateServicesConnection(patientEmail);
         }
     }
 
@@ -102,16 +102,16 @@ public class Initiate_sdk {
         callCustomerDataApi(ctx, UserMobileNumber, Corporate);
     }
 
-    private void InitiateServicesConnection() {
+    private void InitiateServicesConnection(String number) {
         //Global.utils.showProgressDialog(ctx, "Initiating Connection");
         if (this.Corporate.equalsIgnoreCase("KK")) {
-            callAllocateDoctorKKApi(ctx);
+            callAllocateDoctorKKApi(ctx, number);
         } else if (this.Corporate.equalsIgnoreCase("KM")) {
-            callAllocateDoctorKMApi(ctx);
+            callAllocateDoctorKMApi(ctx, number);
         } else if (this.Corporate.equalsIgnoreCase("KS")) {
-            callAllocateDoctorKSApi(ctx);
+            callAllocateDoctorKSApi(ctx, number);
         } else if (this.Corporate.equalsIgnoreCase("QMS")) {
-            callAllocateLawyerQMSApi(ctx);
+            callAllocateLawyerQMSApi(ctx, number);
         }
     }
 
@@ -259,12 +259,16 @@ public class Initiate_sdk {
         }
     }
 
-    public void callAllocateDoctorKKApi(Activity activity) {
+    public void callAllocateDoctorKKApi(Activity activity, String number) {
         if (!Global.utils.isInternerConnected(activity)) {
             Global.utils.showToast(activity, "No internet connection !");
         } else {
             Global.utils.showProgressDialog(ctx, "Initiating Connection");
+
+            String uniqueID = number + "@kashtkaar.com.pk";
             JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("UniqueID", uniqueID);
+
             Log.e("webdoc_doctors_sdk", jsonObject.toString());
 
             APIInterface apiInterface = APIClient.getClient(Constants.BASE_URL_SERVICES);
@@ -297,20 +301,25 @@ public class Initiate_sdk {
                 public void onFailure(Call<AllocateDoctorModel> call, Throwable t) {
                     Global.utils.hideProgressDialog();
                     //Log.e(TAG, t.toString());
-                    Toast.makeText(activity, "Ooops! something went wrong !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, "Oopps! something went wrong !", Toast.LENGTH_LONG).show();
 
                 }
             });
         }
     }
 
-    public void callAllocateDoctorKMApi(Activity activity) {
+    public void callAllocateDoctorKMApi(Activity activity, String number) {
         if (!Global.utils.isInternerConnected(activity)) {
             Global.utils.showToast(activity, "No internet connection !");
         } else {
             Global.utils.showProgressDialog(ctx, "Initiating Connection");
+
+            String uniqueID = number + "@vetdoctor.com.pk";
             JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("UniqueID", uniqueID);
+
             Log.e("webdoc_doctors_sdk", jsonObject.toString());
+
             APIInterface apiInterface = APIClient.getClient(Constants.BASE_URL_SERVICES);
             Call<AllocateDoctorModel> call = apiInterface.callAllocateDoctorKMApi(jsonObject);
 
@@ -347,14 +356,16 @@ public class Initiate_sdk {
         }
     }
 
-    public void callAllocateDoctorKSApi(Activity activity) {
+    public void callAllocateDoctorKSApi(Activity activity, String number) {
         if (!Global.utils.isInternerConnected(activity)) {
             Global.utils.showToast(activity, "No internet connection !");
         } else {
 
             Global.utils.showProgressDialog(ctx, "Initiating Connection");
 
+            String uniqueID = number + "@webdoc.com.pk";
             JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("UniqueID", uniqueID);
 
             Log.e("webdoc_doctors_sdk", jsonObject.toString());
 
@@ -367,7 +378,6 @@ public class Initiate_sdk {
                     Global.utils.hideProgressDialog();
                     if (response.isSuccessful()) {
                         try {
-
                             AllocateDoctorResult allocateDoctorResult = response.body().getAllocateDoctorResult();
                             if (allocateDoctorResult.getStatusCode().equals(Constants.FAILURECODE)) {
 
@@ -398,14 +408,16 @@ public class Initiate_sdk {
         }
     }
 
-    public void callAllocateLawyerQMSApi(Activity activity) {
+    public void callAllocateLawyerQMSApi(Activity activity, String number) {
         if (!Global.utils.isInternerConnected(activity)) {
             Global.utils.showToast(activity, "No internet connection !");
         } else {
 
             Global.utils.showProgressDialog(ctx, "Initiating Connection");
 
+            String uniqueID = number + "@webdoc.com.pk";
             JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("UniqueID", uniqueID);
 
             Log.e("webdoc_doctors_sdk", jsonObject.toString());
 

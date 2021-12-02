@@ -26,13 +26,16 @@ public interface APIInterface {
     @POST("GetCustomerData")
     Call<CustomerDataModel> callCustomerDataApi(@Body JsonObject mojb);
 
-    @POST("Kk/v1/AllocateDoctor")
+    //@POST("Kk/v1/AllocateDoctor")  //OLD
+    @POST("Kk/v1/AllocateDoctorNew")
     Call<AllocateDoctorModel> callAllocateDoctorApi(@Body JsonObject mojb);
 
-    @POST("Km/v1/AllocateDoctor")
+    //@POST("Km/v1/AllocateDoctor")  //OLD
+    @POST("Km/v1/AllocateDoctorNew")
     Call<AllocateDoctorModel> callAllocateDoctorKMApi(@Body JsonObject mojb);
 
-    @POST("Ks/v1/AllocateDoctor")
+    //@POST("Ks/v1/AllocateDoctor")   //OLD
+    @POST("Ks/v1/AllocateDoctorNew")
     Call<AllocateDoctorModel> callAllocateDoctorKSApi(@Body JsonObject mojb);
 
     @POST("QMS/v1/AllocateLawyer")
