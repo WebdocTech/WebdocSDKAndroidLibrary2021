@@ -5,16 +5,17 @@ import com.google.gson.annotations.SerializedName;
 
 public class AllocateDoctorModel {
 
-    @SerializedName("AllocateDoctorResult")
+    @SerializedName("AllocateDoctorNewResult")
     @Expose
-    private AllocateDoctorResult allocateDoctorResult;
+    private AllocateDoctorNewResult allocateDoctorNewResult;
 
-    public AllocateDoctorResult getAllocateDoctorResult() {
-        return allocateDoctorResult;
+    public AllocateDoctorNewResult getAllocateDoctorNewResult() {
+        return allocateDoctorNewResult;
     }
 
-    public void setAllocateDoctorResult(AllocateDoctorResult allocateDoctorResult) {
-        this.allocateDoctorResult = allocateDoctorResult;
+    public void setAllocateDoctorNewResult(AllocateDoctorNewResult allocateDoctorNewResult) {
+        this.allocateDoctorNewResult = allocateDoctorNewResult;
     }
+
 
 }

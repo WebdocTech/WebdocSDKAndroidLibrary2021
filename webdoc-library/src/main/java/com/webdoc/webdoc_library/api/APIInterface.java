@@ -7,7 +7,9 @@ import com.webdoc.webdoc_library.InitiateSDK.modelclasses.KK_modelclasses.Alloca
 import com.webdoc.webdoc_library.InitiateSDK.modelclasses.TPL_modelclasses.CustomerDataModel;
 import com.webdoc.webdoc_library.InitiateSDK.modelclasses.customerdoctor_modelclasses.GetCustomerAndDoctorModel;
 import com.webdoc.webdoc_library.InitiateSDK.modelclasses.CustomerConsultationResult.CustomerConsultationResult;
+import com.webdoc.webdoc_library.InitiateSDK.modelclasses.lawyerModels.AnswerQuestionsModel;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -39,7 +41,7 @@ public interface APIInterface {
     Call<AllocateDoctorModel> callAllocateDoctorKSApi(@Body JsonObject mojb);
 
     @POST("QMS/v1/AllocateLawyer")
-    Call<LawyerModel> callAllocateLawyerApi(@Body JsonObject mojb);
+    Call<AnswerQuestionsModel> callAllocateLawyerApi(@Body JsonObject mojb);
 
     @POST("GetcustomerDataSdk")
     Call<GetCustomerAndDoctorModel> callGetCustomerAndDoctorDataApi(@Body JsonObject mojb);

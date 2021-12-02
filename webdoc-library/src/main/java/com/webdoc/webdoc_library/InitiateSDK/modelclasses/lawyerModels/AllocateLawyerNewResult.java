@@ -1,11 +1,9 @@
-package com.webdoc.webdoc_library.InitiateSDK.modelclasses.KK_modelclasses;
+package com.webdoc.webdoc_library.InitiateSDK.modelclasses.lawyerModels;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AllocateDoctorResult {
-
-
+public class AllocateLawyerNewResult {
     @SerializedName("doctorEmail")
     @Expose
     private String doctorEmail;
@@ -50,6 +48,4 @@ public class AllocateDoctorResult {
     public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
     }
-
-
 }

@@ -4,10 +4,12 @@ import com.webdoc.webdoc_library.Dashboard.modelclasses.AllocateLawyerResult;
 import com.webdoc.webdoc_library.Dashboard.modelclasses.DoctorListResult;
 import com.webdoc.webdoc_library.Dashboard.modelclasses.Doctorprofile;
 import com.webdoc.webdoc_library.InitiateSDK.modelclasses.CustomerConsultationResult.ConusltationList;
+import com.webdoc.webdoc_library.InitiateSDK.modelclasses.KK_modelclasses.AllocateDoctorNewResult;
 import com.webdoc.webdoc_library.InitiateSDK.modelclasses.KK_modelclasses.AllocateDoctorResult;
 import com.webdoc.webdoc_library.InitiateSDK.modelclasses.TPL_modelclasses.CustomerDataModel;
 import com.webdoc.webdoc_library.InitiateSDK.modelclasses.CustomerConsultationResult.Consultationdetail;
 import com.webdoc.webdoc_library.InitiateSDK.modelclasses.CustomerConsultationResult.CustomerConsultationResult;
+import com.webdoc.webdoc_library.InitiateSDK.modelclasses.lawyerModels.AllocateLawyerNewResult;
 
 import java.util.ArrayList;
 
@@ -23,8 +25,8 @@ public class Global {
     public static DoctorListResult doctorListResponse = new DoctorListResult();
     public static CustomerConsultationResult customerConsultationResponse = new CustomerConsultationResult();
     public static CustomerDataModel getCustomerDataModel = new CustomerDataModel();
-    public static AllocateDoctorResult allocateDoctorResponse = new AllocateDoctorResult();
-    public static AllocateLawyerResult allocateLawyerResult = new AllocateLawyerResult();
+    public static AllocateDoctorNewResult allocateDoctorResponse = new AllocateDoctorNewResult();
+    public static AllocateLawyerNewResult allocateLawyerResult = new AllocateLawyerNewResult();
 
     /* TODO: API Response Models Lists */
     public static ArrayList<Doctorprofile> doctorsList = new ArrayList<>();

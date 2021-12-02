@@ -4,6 +4,7 @@ package com.webdoc.webdoc_library.InitiateSDK;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -16,6 +17,9 @@ import com.webdoc.webdoc_library.Dashboard.modelclasses.Doctorprofile;
 import com.webdoc.webdoc_library.Dashboard.modelclasses.LawyerModel;
 import com.webdoc.webdoc_library.Essentials.Constants;
 import com.webdoc.webdoc_library.Essentials.Global;
+import com.webdoc.webdoc_library.InitiateSDK.modelclasses.KK_modelclasses.AllocateDoctorNewResult;
+import com.webdoc.webdoc_library.InitiateSDK.modelclasses.lawyerModels.AllocateLawyerNewResult;
+import com.webdoc.webdoc_library.InitiateSDK.modelclasses.lawyerModels.AnswerQuestionsModel;
 import com.webdoc.webdoc_library.api.APIClient;
 import com.webdoc.webdoc_library.api.APIInterface;
 
@@ -27,6 +31,12 @@ import com.webdoc.webdoc_library.InitiateSDK.modelclasses.customerdoctor_modelcl
 import com.webdoc.webdoc_library.InitiateSDK.modelclasses.customerdoctor_modelclasses.GetcustomerDataSdkResult;
 
 
+import org.json.JSONObject;
+
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -269,6 +279,8 @@ public class Initiate_sdk {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("UniqueID", uniqueID);
 
+
+
             Log.e("webdoc_doctors_sdk", jsonObject.toString());
 
             APIInterface apiInterface = APIClient.getClient(Constants.BASE_URL_SERVICES);
@@ -280,16 +292,17 @@ public class Initiate_sdk {
                     Global.utils.hideProgressDialog();
                     if (response.isSuccessful()) {
                         try {
-                            AllocateDoctorResult allocateDoctorResult = response.body().getAllocateDoctorResult();
-                            if (allocateDoctorResult.getStatusCode().equals(Constants.FAILURECODE)) {
+                            assert response.body() != null;
+                            if (response.body().getAllocateDoctorNewResult().getStatusCode().equals(Constants.FAILURECODE)) {
+                                AllocateDoctorNewResult allocateDoctorResult = response.body().getAllocateDoctorNewResult();
                                 Global.allocateDoctorResponse = allocateDoctorResult;
                                 DoctorID = allocateDoctorResult.getDoctorEmail();
                                 Global.channel = DoctorID;
-                                Global.selectedDoctorDeviceToken = allocateDoctorResult.getDoctorDeviceToken();
+                                //Global.selectedDoctorDeviceToken = allocateDoctorResult.getDoctorDeviceToken();
                                 ctx.startActivity(new Intent(ctx, VideoCall.class));
 
                             } else {
-                                Toast.makeText(ctx, allocateDoctorResult.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ctx, response.body().getAllocateDoctorNewResult().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -329,12 +342,12 @@ public class Initiate_sdk {
                     Global.utils.hideProgressDialog();
                     if (response.isSuccessful()) {
                         try {
-                            AllocateDoctorResult allocateDoctorResult = response.body().getAllocateDoctorResult();
+                            AllocateDoctorNewResult allocateDoctorResult = response.body().getAllocateDoctorNewResult();
                             if (allocateDoctorResult.getStatusCode().equals(Constants.FAILURECODE)) {
                                 Global.allocateDoctorResponse = allocateDoctorResult;
                                 DoctorID = allocateDoctorResult.getDoctorEmail();
                                 Global.channel = DoctorID;
-                                Global.selectedDoctorDeviceToken = allocateDoctorResult.getDoctorDeviceToken();
+                               // Global.selectedDoctorDeviceToken = allocateDoctorResult.getDoctorDeviceToken();
                                 ctx.startActivity(new Intent(ctx, VideoCall.class));
                             } else {
                                 Toast.makeText(ctx, allocateDoctorResult.getMessage(), Toast.LENGTH_SHORT).show();
@@ -378,13 +391,13 @@ public class Initiate_sdk {
                     Global.utils.hideProgressDialog();
                     if (response.isSuccessful()) {
                         try {
-                            AllocateDoctorResult allocateDoctorResult = response.body().getAllocateDoctorResult();
+                            AllocateDoctorNewResult allocateDoctorResult = response.body().getAllocateDoctorNewResult();
                             if (allocateDoctorResult.getStatusCode().equals(Constants.FAILURECODE)) {
 
                                 Global.allocateDoctorResponse = allocateDoctorResult;
                                 DoctorID = allocateDoctorResult.getDoctorEmail();
                                 Global.channel = DoctorID;
-                                Global.selectedDoctorDeviceToken = allocateDoctorResult.getDoctorDeviceToken();
+                                //Global.selectedDoctorDeviceToken = allocateDoctorResult.getDoctorDeviceToken();
                                 ctx.startActivity(new Intent(ctx, VideoCall.class));
 
                             } else {
@@ -422,16 +435,16 @@ public class Initiate_sdk {
             Log.e("webdoc_doctors_sdk", jsonObject.toString());
 
             APIInterface apiInterface = APIClient.getClient(Constants.BASE_URL_SERVICES);
-            Call<LawyerModel> call = apiInterface.callAllocateLawyerApi(jsonObject);
+            Call<AnswerQuestionsModel> call = apiInterface.callAllocateLawyerApi(jsonObject);
 
-            call.enqueue(new Callback<LawyerModel>() {
+            call.enqueue(new Callback<AnswerQuestionsModel>() {
                 @Override
-                public void onResponse(Call<LawyerModel> call, Response<LawyerModel> response) {
+                public void onResponse(Call<AnswerQuestionsModel> call, Response<AnswerQuestionsModel> response) {
                     Global.utils.hideProgressDialog();
                     if (response.isSuccessful()) {
                         try {
 
-                            AllocateLawyerResult allocateDoctorResult = response.body().getAllocateLawyerResult();
+                            AllocateLawyerNewResult allocateDoctorResult = response.body().getAllocateLawyerNewResult();
                             if (allocateDoctorResult.getStatusCode().equals(Constants.FAILURECODE)) {
 
                                 Global.allocateLawyerResult = allocateDoctorResult;
@@ -451,7 +464,7 @@ public class Initiate_sdk {
                 }
 
                 @Override
-                public void onFailure(Call<LawyerModel> call, Throwable t) {
+                public void onFailure(Call<AnswerQuestionsModel> call, Throwable t) {
                     Global.utils.hideProgressDialog();
                     //Log.e(TAG, t.toString());
                     Toast.makeText(activity, "Ooops! something went wrong !", Toast.LENGTH_LONG).show();

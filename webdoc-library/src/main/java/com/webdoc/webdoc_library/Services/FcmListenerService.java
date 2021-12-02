@@ -31,7 +31,7 @@ public class FcmListenerService extends FirebaseMessagingService {
     SharedPreferences sharedPreferences;
 
     @Override
-    public void onMessageReceived(RemoteMessage remoteMessage){
+    public void onMessageReceived(RemoteMessage remoteMessage) {
         Map data = remoteMessage.getData();
 
         Log.d(TAG, "From: " + remoteMessage.getFrom()+"");
